@@ -1,8 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const Nav = () => {
   return (
-    <div className="relative w-full h-120 overflow-hidden">
+    <div className="relative w-full h-150 overflow-hidden">
       <video
         autoPlay
         muted
@@ -19,10 +20,10 @@ const Nav = () => {
         </div>
 
         <ul className="flex gap-8 text-lg font-medium">
-          <li><a href="#" className="hover:text-yellow-400">About Us</a></li>
-          <li><a href="#" className="hover:text-yellow-400">Temples</a></li>
-          <li><a href="#" className="hover:text-yellow-400">Events</a></li>
-          <li><a href="#" className="hover:text-yellow-400">Login</a></li>
+          <li><Link to='/about_us' className="hover:text-yellow-400">About Us</Link></li>
+          <li><Link to='/Temples' className="hover:text-yellow-400">Temples</Link></li>
+          <li><Link to='/Events' className="hover:text-yellow-400">Events</Link></li>
+          <li><Link to='/login' className="hover:text-yellow-400">Login</Link></li>
         </ul>
       </nav>
     </div>
