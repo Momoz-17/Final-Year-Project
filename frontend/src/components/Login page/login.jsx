@@ -25,7 +25,7 @@ const Login = () => {
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
             type="text"
-            name="text"
+            name="username"
             placeholder="Username"
             value={form.username}
             onChange={handleChange}
