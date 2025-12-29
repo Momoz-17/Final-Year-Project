@@ -80,8 +80,9 @@ const App = () => {
               </p>
 
               <Link
-                to='/volunteer_page'
-                className='w-full text-white bg-orange-500 hover:bg-orange-600 transition duration-300 py-3 rounded-lg text-lg font-semibold shadow-md hover:shadow-lg cursor-pointer text-center'
+                to="/volunteer_page"
+                state={{ initiative: item.title }}
+                className="w-full text-white bg-orange-500 hover:bg-orange-600 transition duration-300 py-3 rounded-lg text-lg font-semibold shadow-md hover:shadow-lg cursor-pointer text-center"
               >
                 {item.action.toUpperCase()}
               </Link>
