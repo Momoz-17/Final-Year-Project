@@ -20,6 +20,7 @@ const Nav = () => {
         </div>
 
         <ul className="flex gap-8 text-lg font-medium">
+          <li><Link to='/Admin-dashboard' className="hover:text-yellow-400">Admin Controls</Link></li>
           <li><Link to='/about_us' className="hover:text-yellow-400">About Us</Link></li>
           <li><Link to='/Temples' className="hover:text-yellow-400">Temples</Link></li>
           <li><Link to='/Events' className="hover:text-yellow-400">Events</Link></li>

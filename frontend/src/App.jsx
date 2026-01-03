@@ -6,6 +6,7 @@ import Events from "./components/Events/event";
 import Volunteer_page from "./components/Volunteers_page/volunteer_page";
 import TermsAndConditions from "./components/Volunteers_page/T&C";
 import Register from "./components/Registration page/register";
+import Admin_control from "./components/Admin control/admin_control";
 import ScrollToTop from './scrollToTop';
 import { BrowserRouter , Route , Routes } from 'react-router-dom';      // BrowserRouter not working fix it later
 
@@ -22,6 +23,7 @@ const App = () => {
         <Route path='/volunteer_page' element={<Volunteer_page />} />
         <Route path='/register' element={<Register />} />
         <Route path='/Term & Conditions' element={<TermsAndConditions />} />
+        <Route path='/Admin-dashboard' element={<Admin_control />} />
       </Routes>
     </div>
   )
