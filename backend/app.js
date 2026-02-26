@@ -13,19 +13,21 @@ connectDB();
 
 const app = express();
 
-// 3. Middleware
-app.use(cors()); // Allows your frontend to communicate with this backend
-app.use(express.json()); // Allows the server to accept JSON data in the body
-app.use('/api/auth', authRoutes);
+// 3. Middleware (Corrected Order)
+app.use(cors()); 
+app.use(express.json()); 
 app.use(express.urlencoded({ extended: false }));
+
+// 4. Routes
+app.use('/api/auth', authRoutes);
 app.use('/api/enroll', enrollRoutes);
 
-// 4. Basic Test Route
+// 5. Basic Test Route
 app.get('/', (req, res) => {
   res.send('API is running...');
 });
 
-// 5. Define Port and Listen
+// 6. Define Port and Listen
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {

@@ -2,20 +2,29 @@ const Enrollment = require('../models/Enrollment');
 
 exports.createApplication = async (req, res) => {
   try {
-    // req.user.id comes from the 'protect' middleware we discussed earlier
-    const enrollmentData = {
+    // We map the React form data to our MongoDB model
+    const application = await Enrollment.create({
       ...req.body,
-      user: req.user.id, 
-      programName: req.body.initiative // Mapping your form's 'initiative' to DB 'programName'
-    };
+      user: req.user.id, // Comes from 'protect' middleware
+      programName: req.body.initiative // Maps 'initiative' from React to DB
+    });
 
-    const application = await Enrollment.create(enrollmentData);
-    
     res.status(201).json({
       success: true,
+      message: "Application submitted successfully",
       data: application
     });
   } catch (error) {
     res.status(400).json({ success: false, message: error.message });
+  }
+};
+
+// Admin Route to view applications
+exports.getApplications = async (req, res) => {
+  try {
+    const applications = await Enrollment.find().populate('user', 'name email');
+    res.status(200).json({ success: true, data: applications });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
   }
 };
