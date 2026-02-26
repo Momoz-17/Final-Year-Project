@@ -4,5 +4,6 @@ const { registerUser } = require('../controllers/authController');
 
 // Define the POST route for registration
 router.post('/register', registerUser);
+router.post('/login', loginUser);
 
 module.exports = router;

@@ -22,13 +22,36 @@ const VolunteerPage = () => {
     setForm({ ...form, [name]: type === 'checkbox' ? checked : value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!form.consent) {
       alert('Please accept the consent to proceed');
       return;
     }
-    alert(`Volunteer application submitted for ${form.initiative}`);
+
+    try {
+      const token = localStorage.getItem('token'); // Get the token we saved during login
+      
+      const response = await fetch('http://localhost:5000/api/enroll', {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}` // Send token for security
+        },
+        body: JSON.stringify(form) // This sends all your form fields to the backend
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert(`Success! You are enrolled for ${form.initiative}`);
+      } else {
+        alert(`Error: ${data.message}`);
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      alert("Failed to connect to the server.");
+    }
   };
 
   return (

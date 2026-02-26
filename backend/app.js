@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/authRoutes');
+const enrollRoutes = require('./routes/enrollRoutes');
 
 // 1. Load environment variables
 dotenv.config();
@@ -17,6 +18,7 @@ app.use(cors()); // Allows your frontend to communicate with this backend
 app.use(express.json()); // Allows the server to accept JSON data in the body
 app.use('/api/auth', authRoutes);
 app.use(express.urlencoded({ extended: false }));
+app.use('/api/enroll', enrollRoutes);
 
 // 4. Basic Test Route
 app.get('/', (req, res) => {
